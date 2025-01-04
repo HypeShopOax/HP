@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('IMAGES/FONT2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+        }
+
+        .open-btn {
+            font-size: 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #5757571e;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .side-menu {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: rgba(87, 87, 87, 0.12);
+            overflow-y: auto;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 9;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            padding: 15px;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            font-size: 36px;
+            color: white;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            color: black;
+        }
+
+        .product img {
+            width: 100%; /* Ajusta al ancho del contenedor */
+            max-height: 150px; /* Altura máxima permitida */
+            object-fit: contain; /* Mantiene las proporciones sin recortar */
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .catalog {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .side-menu {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+
+            .side-menu {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="open-btn" onclick="openMenu()">☰ Abrir Menú</button>
+    <div id="side-menu" class="side-menu">
+        <button class="close-btn" onclick="closeMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Catálogo.html">Catálogo</a></li>
+            <li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+            <li><a href="Contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="logo">
+            <h1><img src="IMAGES/LOGO-removebg-preview.png" alt="Logo"></h1>
+        </div>
+    </header>
+
+    <section class="catalog">
+        <a href="BugattiVP.html" class="product">
+            <img src="IMAGES/Producto.Bugatti.png" alt="Producto 1">
+            <h3>Bugatti con Pantalla</h3>
+            <p>$220.00</p>
+        </a>
+        <a href="IplayVP.html" class="product">
+            <img src="IMAGES/Producto.Iplay.png" alt="Producto 2">
+            <h3>Iplay</h3>
+            <p>$250.00</p>
+        </a>
+        <a href="HighlightVP.html" class="product">
+            <img src="IMAGES/Producto.HighLight.png" alt="Producto 3">
+            <h3>HighLight</h3>
+            <p>$150.00</p>
+        </a>
+        <a href="..." class="product">
+            <img src="IMAGES/Proximamente.png" alt="Producto 4">
+            <h3>Próximamente</h3>
+            <p>Próximamente</p>
+        </a>
+    </section>
+
+    <script>
+        function openMenu() {
+            document.getElementById("side-menu").classList.add("open");
+            document.body.classList.add("menu-open");
+        }
+
+        function closeMenu() {
+            document.getElementById("side-menu").classList.remove("open");
+            document.body.classList.remove("menu-open");
+        }
+    </script>
+</body>
+</html>

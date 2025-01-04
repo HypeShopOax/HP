@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighLight</title>
+    <div class="instagram-bubble">
+        <a href="https://www.instagram.com/hypeshop_oax?igsh=MXUzajNnMzFmNnZsOA==" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+    </div>
+    
+    <style>
+        .instagram-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .instagram-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        .instagram-bubble img {
+            width: 50%;
+            height: 50%;
+        }
+    
+        .instagram-bubble a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menú Emergente</title>
+        <style>
+            /* Estilos generales del cuerpo */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                transition: margin-left 0.3s ease;
+            }
+    
+            /* Botón para abrir el menú */
+            .open-btn {
+                font-size: 20px;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background-color: #000000;
+                color: white;
+                border: none;
+                padding: 15px;
+                cursor: pointer;
+                z-index: 10;
+                display: block;
+            }
+    
+            /* Estilo del menú emergente */
+            .side-menu {
+                height: 100%;
+                width: 250px;
+                position: fixed;
+                top: 0;
+                left: -250px; /* Empieza fuera de la pantalla */
+                background-color: #000000;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+                z-index: 9;
+            }
+    
+            /* Estilo de los enlaces dentro del menú */
+            .side-menu ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+    
+            .side-menu ul li {
+                padding: 15px;
+                text-align: left;
+            }
+    
+            .side-menu ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                transition: background-color 0.3s;
+            }
+    
+            /* Efecto hover en los enlaces */
+            .side-menu ul li a:hover {
+                background-color: #555;
+            }
+    
+            /* Botón de cerrar el menú */
+            .close-btn {
+                font-size: 36px;
+                color: white;
+                background: none;
+                border: none;
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                cursor: pointer;
+            }
+    
+            /* Estilo cuando el menú está abierto */
+            .side-menu.open {
+                left: 0;
+            }
+    
+            /* Espacio del cuerpo cuando el menú se abre */
+            body.menu-open {
+                margin-left: 250px; /* El contenido se mueve a la derecha */
+            }
+    
+            /* Hacer que el botón de abrir menú desaparezca cuando el menú está abierto */
+            body.menu-open .open-btn {
+                display: none;
+            }
+    
+            /* Ajustes responsivos */
+            @media (max-width: 768px) {
+                .side-menu {
+                    width: 200px; /* Menú más pequeño en pantallas móviles */
+                }
+    
+                /* Reducir el tamaño del texto en dispositivos pequeños */
+                .side-menu ul li a {
+                    font-size: 16px;
+                }
+    
+                .open-btn {
+                    font-size: 18px;
+                    top: 10px;
+                    left: 10px;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .side-menu {
+                    width: 180px; /* Menú aún más pequeño en pantallas muy pequeñas */
+                }
+    
+                /* Reducir aún más el tamaño de la fuente y los márgenes */
+                .side-menu ul li a {
+                    font-size: 14px;
+                }
+    
+                .open-btn {
+                    font-size: 16px;
+                    top: 8px;
+                    left: 8px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- Botón para abrir el menú -->
+        <button class="open-btn" onclick="openMenu()">☰ Abrir Menú</button>
+    
+        <!-- Menú emergente -->
+        <div id="side-menu" class="side-menu">
+            <button class="close-btn" onclick="closeMenu()">×</button>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Catálogo.html">Catálogo</a></li>
+                <li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    
+        <!-- JavaScript para abrir y cerrar el menú -->
+        <script>
+            /* Función para abrir el menú */
+            function openMenu() {
+                // Añade la clase 'open' al menú, lo cual lo hace deslizar hacia la izquierda
+                document.getElementById("side-menu").classList.add("open");
+                // Añade la clase 'menu-open' al body para mover el contenido y ocultar el botón de abrir
+                document.body.classList.add("menu-open");
+            }
+    
+            /* Función para cerrar el menú */
+            function closeMenu() {
+                // Elimina la clase 'open' para ocultar el menú
+                document.getElementById("side-menu").classList.remove("open");
+                // Elimina la clase 'menu-open' del body para restaurar el contenido y mostrar el botón de abrir
+                document.body.classList.remove("menu-open");
+            }
+        </script>
+    </body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .details-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .details-section h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .details-section p {
+            margin: 5px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .flavors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .flavors button {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .flavors button.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .quantity button {
+            padding: 10px;
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        .buttons {
+            margin: 15px 0;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buy-now {
+            background: #000;
+            color: #fff;
+        }
+
+        .features {
+            margin-top: 20px;
+        }
+
+        .features ul {
+            padding-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="IMAGES/Producto.HighLight.png" alt="Highlight Vape">
+        </div>
+
+        <!-- Details Section -->
+        <div class="details-section">
+            <h1>Highlight</h1>
+            <p class="price">$150.00 MXN</p>
+
+            <div>
+                <h3>Sabores Disponibles</h3>
+                <div class="flavors">
+                    <button class="active">Sour Apple</button>
+                    <button>Sweet Mint</button>
+                    <button>Apple Watermelon</button>
+                    <button>Mango</button>
+                    <button>Lemon Lime</button>
+                </div>
+            </div>
+
+            <div>
+                <h3>Cantidad</h3>
+                <div class="quantity">
+                    <button id="decrement">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button id="increment">+</button>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="buy-now">Comprar ahora en Dm de IG</button>
+            </div>
+
+            <div class="features">
+                <h3>Características del Highlight</h3>
+                <ul>
+                    <li>4,000 puffs</li>
+                    <li>5% Nic</li>
+                    <li>Recargable</li>
+                    <li>Presentación Única</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quantity buttons functionality
+        const decrementButton = document.getElementById('decrement');
+        const incrementButton = document.getElementById('increment');
+        const quantityInput = document.getElementById('quantity');
+
+        decrementButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        incrementButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+
+        // Flavor selection functionality
+        const flavorButtons = document.querySelectorAll('.flavors button');
+
+        flavorButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                flavorButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+
+</html>
